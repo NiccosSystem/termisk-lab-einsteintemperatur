@@ -9,8 +9,13 @@ ms1 = [50.20, 48.28, 46.47, 44.71, 42.97]
 ts2 = np.array([360, 420, 480, 540, 600])
 ms2 = np.array([41.36, 39.78, 38.23, 36.70, 35.22])-6.141
 
-plt.scatter(ts1, ms1)
-plt.scatter(ts2, ms2)
+plt.scatter(ts1, ms1, label="Målepunkter", color="0")
+plt.scatter(ts2, ms2, color="0")
+
+plt.axvline(270, linestyle="dotted", color="0.3")
+plt.text(274, 29, r"$t_1$")
+plt.axvline(321, linestyle="dotted", color="0.3")
+plt.text(325, 29, r"$t_2$")
 
 
 def massefunk(tid, a, b):
@@ -53,7 +58,13 @@ print("Einsteintemperatur: {0}".format(einsteintemp))
 ts1_space = np.linspace(0, 321, 600)
 ts2_space = np.linspace(270, 600, 600)
 
-plt.plot(ts1_space, massefunk(ts1_space, *popts1))
-plt.plot(ts2_space, massefunk(ts2_space, *popts2))
+plt.plot(ts1_space, massefunk(ts1_space, *popts1), color="0", label=r"$m_1(t)$")
+plt.plot(ts2_space, massefunk(ts2_space, *popts2), color="0", label=r"$m_2(t)$", linestyle="--")
 
+plt.xlabel(r"$t$ / s")
+plt.ylabel(r"$m$ / g")
+#plt.title(r"Eksperimentelle måleverdier og kurvetilpasning")
+
+plt.tight_layout()
+plt.legend()
 plt.show()

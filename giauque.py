@@ -8,7 +8,7 @@ c = np.array([0.022, 0.054, 0.112, 0.203, 0.332, 0.500, 0.698, 0.912, 1.375, 1.8
               3.704, 3.943, 4.165, 4.361, 4.536, 4.690, 4.823, 4.938, 5.039, 5.122, 5.198, 5.268,
               5.329, 5.383, 5.436, 5.483, 5.523, 5.562, 5.592, 5.599])*4.184
 
-plt.scatter(T, c)
+plt.scatter(T, c, color="0")
 
 R = 8.314
 def cvm(temp, theta):
@@ -19,13 +19,16 @@ print(popt)
 print(pcov)
 
 T_teoretisk = np.linspace(1, 330, 600)
-plt.plot(T_teoretisk, cvm(T_teoretisk, popt[0]))
+plt.plot(T_teoretisk, cvm(T_teoretisk, popt[0]), color="0")
 
-plt.xlabel(r"$T$/K")
-plt.ylabel(r"$C_{vm}$/K")
+#plt.title(r"Kurvetilpasning, Giauque og Meads, $\Theta_E = 283$K")
+plt.xlabel(r"$T$ / K")
+plt.ylabel(r"$C_{vm}$ / J K$^{-1}$ mol $^{-1}$")
 
 plt.ylim([0, 25])
 plt.xlim([0, 320])
+
+plt.tight_layout()
 
 plt.show()
 
