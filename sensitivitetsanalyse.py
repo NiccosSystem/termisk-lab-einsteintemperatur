@@ -23,6 +23,8 @@ L = 2.0 * 10**5
 T0r = 298.15
 Tf = 77
 n = 0.2223
+n = 5.997 / 26.98
+print(n)
 R = 8.314
 deltaQ = - snitt_dm * L / 1000
 T0 = T0r
@@ -43,11 +45,19 @@ oe_dm1 = fsolve(deltaqfunk, 283)
 deltaQ = - dm2 * L / 1000
 oe_dm2 = fsolve(deltaqfunk, 283)
 
+deltaQ = - snitt_dm * L / 1000
+n = (5.997 + 0.05) / 26.98
+oe_np = fsolve(deltaqfunk, 283)
+n = (5.997 - 0.05) / 26.98
+oe_nm = fsolve(deltaqfunk, 283)
+
 dmg = 0.5 * (oe_dm1 - oe_dm2)
 t0g = 0.5 * (oe_t0p - oe_t0m)
+ng = 0.5 * (oe_np - oe_nm)
 
 print("Massesensitivitet: {0}".format(dmg))
 print("Temperatursensitivitet: {0}".format(t0g))
+print("Prøvesensitivitet: {0}".format(ng))
 
-gauss = math.sqrt(dmg**2 + t0g**2)
+gauss = math.sqrt(dmg**2 + t0g**2 + ng**2)
 print("Gauss: {0}".format(gauss))

@@ -34,6 +34,9 @@ dm2 = massefunk(321, *popts1) - massefunk(321, *popts2)
 snitt_dm = 0.5 * (dm1+dm2)
 usikker_dm = 0.5 * (dm1 - dm2)
 
+print("Delta m1: {0}".format(dm1))
+print("Delta m2: {0}".format(dm2))
+
 print("Snitt deltaM: {0}".format(snitt_dm))
 print("Usikkerhet deltaM: {0}".format(usikker_dm))
 
